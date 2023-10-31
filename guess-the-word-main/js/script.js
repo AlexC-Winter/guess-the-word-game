@@ -12,5 +12,15 @@ const message = document.querySelector(".message");
 const playAgain = document.querySelector(".play-again")
 //Variable playAgain is the hidden play again button
 const word = "magnolia"
-console.log(guessedLetters, button, letters, wordInProgress, remaining, guessesLeft, message, playAgain, word);
+//console.log(guessedLetters, button, letters, wordInProgress, remaining, guessesLeft, message, playAgain, word);
 
+const placeholder = function(word){
+    const placeholderLetters = [];
+    for (const letter of word){
+        console.log(letter);
+        placeholderLetters.push("●");
+    }
+    wordInProgress.innerText = placeholderLetters.join("")
+};
+
+placeholder(word);
