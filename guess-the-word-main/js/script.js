@@ -24,3 +24,10 @@ const placeholder = function(word){
 };
 
 placeholder(word);
+
+button.addEventListener("click", function(e){
+    e.preventDefault();
+    const guess = letters.value;
+    console.log(guess)
+    letters.value = ""
+});
