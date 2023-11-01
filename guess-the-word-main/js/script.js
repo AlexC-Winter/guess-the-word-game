@@ -30,4 +30,20 @@ button.addEventListener("click", function(e){
     const guess = letters.value;
     console.log(guess)
     letters.value = ""
+    message.innerText = ""
+    const letterInput = validateLetter(guess)
+    console.log(letterInput)
 });
+
+const validateLetter = function(input){
+    const acceptedLetter = /[a-zA-Z]/
+    if (input.length === 0){
+        message.innerText = "Guess a letter from A-Z!"
+    } else if (input.length > 1){
+        message.innerText = "Please guess one letter at a time!"
+    } else if ( !input.match(acceptedLetter)){
+        message.innerText = "Please guess a letter from A-Z"
+    } else {
+        return input
+    }
+}
