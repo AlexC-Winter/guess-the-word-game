@@ -12,6 +12,7 @@ const message = document.querySelector(".message");
 const playAgain = document.querySelector(".play-again")
 //Variable playAgain is the hidden play again button
 const word = "magnolia"
+const letterGuesses = []
 //console.log(guessedLetters, button, letters, wordInProgress, remaining, guessesLeft, message, playAgain, word);
 
 const placeholder = function(word){
@@ -32,7 +33,9 @@ button.addEventListener("click", function(e){
     letters.value = ""
     message.innerText = ""
     const letterInput = validateLetter(guess)
-    console.log(letterInput)
+    if (letterInput) {
+        makeGuess(guess)
+    }
 });
 
 const validateLetter = function(input){
@@ -45,5 +48,15 @@ const validateLetter = function(input){
         message.innerText = "Please guess a letter from A-Z"
     } else {
         return input
+    }
+}
+
+const makeGuess = function(guess){
+    guess = guess.toUpperCase()
+    if (letterGuesses.includes(guess)){
+        message.innerText = "You've already guessed that one!"
+    } else {
+        letterGuesses.push(guess)
+        console.log(letterGuesses)
     }
 }
