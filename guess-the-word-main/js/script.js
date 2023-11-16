@@ -58,5 +58,38 @@ const makeGuess = function(guess){
     } else {
         letterGuesses.push(guess)
         console.log(letterGuesses)
+        showGuessedLetter()
+        wordProgress(letterGuesses)
     }
 }
+
+const showGuessedLetter = function() {
+    guessedLetters.innerHTML = ""
+    for (const letter of letterGuesses) {
+        const li = document.createElement("li")
+        li.innerText = letter;
+        guessedLetters.append(li)
+    }
+}
+
+const wordProgress = function(letterGuesses){
+    const wordUpper = word.toUpperCase()
+    const wordArray = wordUpper.split("")
+    const revealWord = [];
+    for (const letter of wordArray) {
+        if (letterGuesses.includes(letter)) {
+            revealWord.push(letter.toUpperCase())
+        } else {
+            revealWord.push("●")
+        }
+    }
+    wordInProgress.innerText = revealWord.join("")
+    checkIfWin()
+}
+
+const checkIfWin = function () {
+    if (word.toUpperCase() === wordInProgress.innerText) {
+      message.classList.add("win");
+      message.innerHTML = `<p class="highlight">You guessed the correct word! Congrats!</p>`;
+    }
+  };
