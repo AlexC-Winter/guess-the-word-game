@@ -124,3 +124,27 @@ const checkIfWin = function () {
     }
   };
 
+  const startOver = function () {
+    button.classList.add("hide");
+    remaining.classList.add("hide");
+    guessedLetters.classList.add("hide");
+    playAgain.classList.remove("hide");
+  };
+  
+  playAgain.addEventListener("click", function () {
+    // reset all original values - grab new word
+    message.classList.remove("win");
+    guessedLetters = [];
+    remainingGuesses = 8;
+    guessesLeft.innerText = `${remainingGuesses} guesses`;
+    guessedLetters.innerHTML = "";
+    message.innerText = "";
+    // Grab a new word
+    getWord();
+  
+    // show the right UI elements
+    button.classList.remove("hide");
+    playAgain.classList.add("hide");
+    remaining.classList.remove("hide");
+    guessedLetters.classList.remove("hide");
+  });
